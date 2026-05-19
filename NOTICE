@@ -1,0 +1,17 @@
+CLIronChef Trademark and Interoperability Notice
+
+CLIronChef is an independent interoperability project. It is not affiliated with,
+endorsed by, sponsored by, or approved by Typhur Inc.
+
+"Typhur", "Dome 2", "Sync ONE", and related product names, trademarks, service
+marks, logos, and brand assets are the property of Typhur Inc. They are referenced
+in this project only to identify the user-owned hardware and services that the
+software interoperates with.
+
+The MIT License in LICENSE covers CLIronChef source code, documentation, recipes,
+and bundled project data authored or compiled by this project's contributors. It
+does not grant rights to Typhur trademarks, logos, app icons, brand assets, or
+other materials owned by Typhur Inc.
+
+See DISCLAIMER.md for legal, account, service-availability, and safety context.
+See SAFETY.md for operational guidance before running a live cook.

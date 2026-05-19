@@ -34,5 +34,6 @@ project overview; the pages below are the detailed guides.
 
 - [PUBLIC_RELEASE_CHECKLIST.md](project/PUBLIC_RELEASE_CHECKLIST.md) — before publishing to GitHub
 - [LESSONS_LEARNED.md](cooking/LESSONS_LEARNED.md) — field notes from real cooks
+- [../NOTICE](../NOTICE) — trademark and interoperability notice
 - [../DISCLAIMER.md](../DISCLAIMER.md) — legal and affiliation notes
 - [../SECURITY.md](../SECURITY.md) — security reporting and threat model

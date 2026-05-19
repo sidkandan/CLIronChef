@@ -66,8 +66,8 @@ environment variables exist. They should not find real secret values.
 - [ ] `docs/reference/CLI_REFERENCE.md` matches `cliron-chef --help`.
 - [ ] `docs/cooking/COOK_LIFECYCLE.md` clearly says timer zero is terminal.
 - [ ] `AGENTS.md` gives fresh AI sessions the live-cook safety rules.
-- [ ] `SAFETY.md`, `DISCLAIMER.md`, `SECURITY.md`, and `docs/project/PRIVACY.md` are linked from
-      README.
+- [ ] `LICENSE`, `NOTICE`, `SAFETY.md`, `DISCLAIMER.md`, `SECURITY.md`, and
+      `docs/project/PRIVACY.md` are linked from README or the docs index.
 - [ ] Examples use placeholders for device IDs.
 - [ ] Warm-hold is documented as advanced opt-in, not the public default.
 

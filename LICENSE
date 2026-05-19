@@ -19,30 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-────────────────────────────────────────────────────────────────────────────────
-ADDITIONAL NOTICE (not part of the MIT grant)
-────────────────────────────────────────────────────────────────────────────────
-
-This project is NOT affiliated with, endorsed by, or sponsored by Typhur Inc.
-"Typhur", "Dome 2", "Sync ONE", and related trademarks are the property of
-Typhur Inc. They are referenced here in a nominative-fair-use sense to identify
-the hardware this software interoperates with.
-
-The MIT license above covers the code authored by this project's contributors.
-It does NOT grant any rights to:
-
-- Typhur's trademarks, app icons, or brand assets
-- Typhur protocol constants, service identifiers, trademarks, or other Typhur-owned
-  materials referenced for compatibility with user-owned devices
-- Typhur's cooking-mode dictionaries (data/modes/*.json) — those values are
-  documented here for personal use; redistributing them commercially is
-  beyond the scope of this license
-
-This is an independent interoperability project. The authors make no warranty about food
-safety, device safety, account status, service availability, or fitness for any
-particular cook. Always supervise active cooks. The physical Start button on the device
-is intentionally unbypassable as a safety feature; respect it.
-
-See DISCLAIMER.md for the full legal context and SAFETY.md for operational
-safety guidance.

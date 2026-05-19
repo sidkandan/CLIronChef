@@ -1,4 +1,4 @@
-include README.md LICENSE DISCLAIMER.md SAFETY.md SECURITY.md CONTRIBUTING.md CHANGELOG.md AGENTS.md CLAUDE.md GEMINI.md
+include README.md LICENSE NOTICE DISCLAIMER.md SAFETY.md SECURITY.md CONTRIBUTING.md CHANGELOG.md AGENTS.md CLAUDE.md GEMINI.md
 recursive-include docs *.md *.jpg
 recursive-include recipes *.json *.md
 recursive-include data/modes *.json *.md

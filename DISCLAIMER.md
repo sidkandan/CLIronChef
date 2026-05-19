@@ -12,6 +12,9 @@ endorsed by, sponsored by, or approved by Typhur Inc.** All Typhur product names
 (Dome 2, Sync ONE, Sync Air Fryer, etc.) are trademarks of Typhur Inc., used here under
 nominative fair use to identify the hardware this software interoperates with.
 
+The project's trademark and interoperability notice lives in [NOTICE](NOTICE). The
+project license itself is the canonical MIT text in [LICENSE](LICENSE).
+
 ## Independent interoperability notice
 
 CLIronChef is intended for owners of Typhur hardware who want to operate their own

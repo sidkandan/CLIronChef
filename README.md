@@ -247,11 +247,11 @@ beyond stars, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-MIT, with notice. See [LICENSE](LICENSE) and [DISCLAIMER.md](DISCLAIMER.md).
+MIT. See [LICENSE](LICENSE).
 
-**TL;DR**: The code is MIT-licensed. CLIronChef is an independent interoperability client,
-not affiliated with Typhur Inc. Use at your own risk; supervise your cooks; the authors
-are not responsible for burned food or burned-out heating elements.
+**TL;DR**: CLIronChef is MIT-licensed. It is an independent interoperability client, not
+affiliated with Typhur Inc.; see [NOTICE](NOTICE) for trademark/non-affiliation context
+and [DISCLAIMER.md](DISCLAIMER.md) / [SAFETY.md](SAFETY.md) before running live cooks.
 
 ## Contributing
 
