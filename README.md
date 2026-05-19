@@ -1,6 +1,6 @@
 # CLIronChef
 
-![License: MIT](https://img.shields.io/badge/license-MIT-blue)
+![License](https://img.shields.io/github/license/sidkandan/CLIronChef)
 ![Python: 3.9+](https://img.shields.io/badge/python-3.9%2B-blue)
 ![Recipes](https://img.shields.io/github/directory-file-count/sidkandan/CLIronChef/recipes?label=recipes&filter=*.json)
 ![CI](https://github.com/sidkandan/CLIronChef/actions/workflows/ci.yml/badge.svg)
@@ -13,6 +13,20 @@ probe telemetry, hot-modifies mode/temperature/time at recipe thresholds, and st
 the target internal temperature.
 
 ![Cooked salmon in the Typhur Dome 2 basket with a Sync ONE probe inserted and CLI telemetry visible](docs/assets/salmon-result.jpg)
+
+## What happened when three CLI agents cooked the same salmon
+
+On 2026-05-17 I gave Claude Code, Codex, and Gemini CLI the same hardware
+(Typhur Dome 2 + Sync ONE probe), the same 1" salmon fillet, the same coating,
+and the same prompt: cook it to silky medium.
+
+| Place | Agent | Plan | Why it placed there |
+|---|---|---|---|
+| 🥇 | Gemini CLI | Grill 450°F → Bake at probe 95°F → STOP 120°F | Read the [Typhur mode-bias docs](https://explore.typhur.com/typhur-dome-cooking-modes); picked bottom-element Grill for the skin-down fillet |
+| 🥈 | Codex CLI | Air Fry 390°F → Bake at probe 104°F → STOP 128°F | Clean protocol + full telemetry; wrong mode bias (top-element); pulled 8°F high |
+| 🥉 | Claude Code | Multi-stage Air Fry → time-based phase swap → firmware locked | Hit `cmdError 1/513` (cookingState=5); salvage round taught the single-stage + hot-modify pattern now hardcoded in the runner |
+
+Full field notes: **[docs/cooking/LESSONS_LEARNED.md](docs/cooking/LESSONS_LEARNED.md)**. The lessons are encoded as recipe schema constraints, runner invariants, and the AGENTS.md operating contract.
 
 ```bash
 $ cliron-chef cook salmon_basic
