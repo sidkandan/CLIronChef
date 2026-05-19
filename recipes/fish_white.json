@@ -1,0 +1,18 @@
+{
+  "name": "White fish (cod / halibut / sea bass)",
+  "description": "Single-phase Bake. White fish dries fast under high fan; this keeps it moist.",
+  "protein": "cod, halibut, sea bass — ~1 inch thick fillet",
+  "target_doneness": "flaky moist medium (130°F final)",
+  "final_internal_after_rest": "130°F",
+  "pull_temp_f": 125.0,
+  "done_signal": "stop",
+  "phases": [
+    {
+      "trigger_temp_f": 0.0,
+      "mode": 10,
+      "temp_f": 350,
+      "time_s": 2400,
+      "name": "Gentle even cook (Bake 350°F — medium fan, no drying)"
+    }
+  ]
+}

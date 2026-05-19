@@ -1,0 +1,25 @@
+{
+  "name": "Steak (reverse-sear)",
+  "description": "Ribeye / NY strip 1.25-1.75\" thick. Slow warmup, top-blast finish via Broil.",
+  "protein": "ribeye or NY strip, 1.25-1.75 inches thick",
+  "target_doneness": "medium-rare (130°F final, juicy)",
+  "final_internal_after_rest": "130°F (medium-rare)",
+  "pull_temp_f": 125.0,
+  "done_signal": "stop",
+  "phases": [
+    {
+      "trigger_temp_f": 0.0,
+      "mode": 10,
+      "temp_f": 250,
+      "time_s": 2400,
+      "name": "Slow warmup (Bake 250°F — even cook, no edge overcook)"
+    },
+    {
+      "trigger_temp_f": 110.0,
+      "mode": 14,
+      "temp_f": 450,
+      "time_s": 2400,
+      "name": "Top sear blast (Broil 450°F — top element only, ~60-90s)"
+    }
+  ]
+}

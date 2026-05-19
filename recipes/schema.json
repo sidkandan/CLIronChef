@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CLIronChef Recipe",
+  "description": "Declarative cook recipe for the cliron-chef cook runner",
+  "type": "object",
+  "required": ["name", "pull_temp_f", "phases"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Display name for the recipe (e.g., 'Salmon (basic)')"
+    },
+    "description": {
+      "type": "string",
+      "description": "One-line summary of what the recipe does"
+    },
+    "protein": {
+      "type": "string",
+      "description": "Target ingredient (e.g., 'salmon fillet, 1 inch, skin-on')"
+    },
+    "target_doneness": {
+      "type": "string",
+      "description": "Plain-English doneness target (e.g., 'medium (silky, clean flake)')"
+    },
+    "final_internal_after_rest": {
+      "type": "string",
+      "description": "Expected final internal temp after the rest period (e.g., '125-130°F')"
+    },
+    "dome2_id": {
+      "type": ["string", "integer"],
+      "description": "Override auto-detected AF04 device ID"
+    },
+    "probe_id": {
+      "type": ["string", "integer"],
+      "description": "Override auto-detected WT01 device ID"
+    },
+    "pull_temp_f": {
+      "type": "number",
+      "minimum": 32,
+      "maximum": 212,
+      "description": "Probe internal temp at which to fire the done signal"
+    },
+    "done_signal": {
+      "type": "string",
+      "enum": ["stop", "warm_hold"],
+      "default": "stop",
+      "description": "How to signal cook completion: 'stop' sends STOP at pull target; 'warm_hold' is an advanced opt-in low-temp cue"
+    },
+    "warm_hold_mode": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 16,
+      "default": 13,
+      "description": "If done_signal=warm_hold, the cookingMode to swap to (default: 13 = Dehydrate)"
+    },
+    "warm_hold_temp_f": {
+      "type": "number",
+      "minimum": 105,
+      "maximum": 450,
+      "default": 180,
+      "description": "Warm-hold target temp (default: 180°F)"
+    },
+    "warm_hold_time_s": {
+      "type": "integer",
+      "minimum": 60,
+      "maximum": 3600,
+      "default": 600,
+      "description": "Warm-hold setTime in seconds (default: 600 = 10 min)"
+    },
+    "phases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["trigger_temp_f", "mode", "temp_f", "time_s"],
+        "properties": {
+          "trigger_temp_f": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 212,
+            "description": "Probe core temp that triggers this phase. Phase 0 MUST be 0.0."
+          },
+          "mode": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 16,
+            "description": "AF04 cookingMode integer (1=Air Fry, 3=Grill, 10=Bake, etc.)"
+          },
+          "temp_f": {
+            "type": "number",
+            "minimum": 105,
+            "maximum": 500,
+            "description": "Target chamber temperature in Fahrenheit"
+          },
+          "time_s": {
+            "type": "integer",
+            "minimum": 2400,
+            "maximum": 86400,
+            "description": "Timer buffer in seconds; ALWAYS use 2400 (40 min) for cooking phases"
+          },
+          "name": {
+            "type": "string",
+            "description": "Human-readable label for logging"
+          }
+        }
+      }
+    }
+  }
+}

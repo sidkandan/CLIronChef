@@ -1,0 +1,28 @@
+{
+  "name": "Salmon (warm-hold cue)",
+  "description": "Advanced salmon variant that swaps to Dehydrate 180°F as a visible cue. Pull promptly; warm-hold is not unattended cooking.",
+  "protein": "salmon fillet, 1 inch thick, skin-on",
+  "target_doneness": "medium (silky, clean flake)",
+  "final_internal_after_rest": "125-130°F if pulled promptly after the Dehydrate cue",
+  "pull_temp_f": 120.0,
+  "done_signal": "warm_hold",
+  "warm_hold_mode": 13,
+  "warm_hold_temp_f": 180,
+  "warm_hold_time_s": 600,
+  "phases": [
+    {
+      "trigger_temp_f": 0.0,
+      "mode": 3,
+      "temp_f": 450,
+      "time_s": 2400,
+      "name": "Sear (Grill 450°F)"
+    },
+    {
+      "trigger_temp_f": 95.0,
+      "mode": 10,
+      "temp_f": 300,
+      "time_s": 2400,
+      "name": "Gentle finish (Bake 300°F)"
+    }
+  ]
+}

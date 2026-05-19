@@ -1,0 +1,25 @@
+{
+  "name": "Salmon (basic)",
+  "description": "Skin-down salmon, reverse-sear with Grill→Bake. STOP done signal.",
+  "protein": "salmon fillet, 1 inch thick, skin-on",
+  "target_doneness": "medium (silky, clean flake)",
+  "final_internal_after_rest": "125-130°F",
+  "pull_temp_f": 120.0,
+  "done_signal": "stop",
+  "phases": [
+    {
+      "trigger_temp_f": 0.0,
+      "mode": 3,
+      "temp_f": 450,
+      "time_s": 2400,
+      "name": "Sear (Grill 450°F — bottom-element bias for skin-down salmon)"
+    },
+    {
+      "trigger_temp_f": 95.0,
+      "mode": 10,
+      "temp_f": 300,
+      "time_s": 2400,
+      "name": "Gentle finish (Bake 300°F — top-element, medium fan)"
+    }
+  ]
+}

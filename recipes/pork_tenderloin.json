@@ -1,0 +1,25 @@
+{
+  "name": "Pork tenderloin",
+  "description": "Whole tenderloin, Grill sear then Bake gentle finish. Typhur chef's-choice 145°F target.",
+  "protein": "whole pork tenderloin, 1.5-2 lb",
+  "target_doneness": "medium (145°F — Typhur's AF13 probe-preset chef's choice for pork)",
+  "final_internal_after_rest": "145°F",
+  "pull_temp_f": 140.0,
+  "done_signal": "stop",
+  "phases": [
+    {
+      "trigger_temp_f": 0.0,
+      "mode": 3,
+      "temp_f": 425,
+      "time_s": 2400,
+      "name": "Sear (Grill 425°F — develops crust on tenderloin's exposed flesh)"
+    },
+    {
+      "trigger_temp_f": 110.0,
+      "mode": 10,
+      "temp_f": 325,
+      "time_s": 2400,
+      "name": "Gentle finish (Bake 325°F — top + medium fan, no edge overcook)"
+    }
+  ]
+}

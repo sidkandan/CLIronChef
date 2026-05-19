@@ -1,0 +1,7 @@
+include README.md LICENSE DISCLAIMER.md SAFETY.md SECURITY.md CONTRIBUTING.md CHANGELOG.md AGENTS.md CLAUDE.md GEMINI.md
+recursive-include docs *.md *.jpg
+recursive-include recipes *.json *.md
+recursive-include data/modes *.json *.md
+recursive-include examples *.py *.md
+recursive-include scripts *.py *.sh
+recursive-include tests *.py

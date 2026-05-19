@@ -1,0 +1,18 @@
+{
+  "name": "Chicken breast (boneless skinless)",
+  "description": "Single-phase even cook. Bake mode for moisture retention.",
+  "protein": "boneless skinless chicken breast, ~6-8 oz",
+  "target_doneness": "safe + juicy (162°F final)",
+  "final_internal_after_rest": "162°F",
+  "pull_temp_f": 155.0,
+  "done_signal": "stop",
+  "phases": [
+    {
+      "trigger_temp_f": 0.0,
+      "mode": 10,
+      "temp_f": 375,
+      "time_s": 2400,
+      "name": "Even cook (Bake 375°F — medium fan, moisture priority)"
+    }
+  ]
+}

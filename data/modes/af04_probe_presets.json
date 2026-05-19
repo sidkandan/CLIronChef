@@ -1,0 +1,63 @@
+{
+  "_note": "Typhur probe-cook target temperatures adapted from AF13 (Sync Air Fryer) preset metadata. The AF13 has an integrated probe; these target temps are useful references for protein-medium doneness. They apply equally to the AF04 Dome 2 + standalone WT01 Sync ONE probe (which CLIronChef supports) — the protein doesn't care which model of probe is measuring it.",
+  "_source": "Bundled AF13 probe preset metadata maintained by this project",
+  "presetList": [
+    {
+      "name": "Manual",
+      "value": "manual",
+      "cookingMode": "roast",
+      "defaultTemp": 140,
+      "temperatureMin": 32,
+      "temperatureMax": 212
+    },
+    {
+      "name": "Beef",
+      "value": "beef",
+      "cookingMode": "roast",
+      "donenessList": [
+        {"desc": "rare", "temperature": 115, "temperatureMin": 110, "temperatureMax": 120},
+        {"desc": "medium-rare", "temperature": 125, "temperatureMin": 121, "temperatureMax": 126},
+        {"desc": "medium", "temperature": 130, "temperatureMin": 127, "temperatureMax": 135, "chefsChoice": true},
+        {"desc": "medium-well", "temperature": 140, "temperatureMin": 136, "temperatureMax": 145},
+        {"desc": "well-done", "temperature": 150, "temperatureMin": 146, "temperatureMax": 157}
+      ]
+    },
+    {
+      "name": "Chicken",
+      "value": "chicken",
+      "cookingMode": "roast",
+      "modeDefaultTemperature": 360,
+      "donenessList": [
+        {"desc": "well-done", "temperature": 165, "temperatureMin": 154, "temperatureMax": 180, "chefsChoice": true}
+      ]
+    },
+    {
+      "name": "Pork",
+      "value": "pork",
+      "cookingMode": "roast",
+      "donenessList": [
+        {"desc": "medium", "temperature": 145, "temperatureMin": 143, "temperatureMax": 147, "chefsChoice": true},
+        {"desc": "medium-well", "temperature": 150, "temperatureMin": 148, "temperatureMax": 153},
+        {"desc": "well-done", "temperature": 160, "temperatureMin": 154, "temperatureMax": 163}
+      ]
+    },
+    {
+      "name": "Fish",
+      "value": "fish",
+      "cookingMode": "roast",
+      "donenessList": [
+        {"desc": "medium", "temperature": 122, "temperatureMin": 118, "temperatureMax": 126, "chefsChoice": true},
+        {"desc": "medium-well", "temperature": 135, "temperatureMin": 127, "temperatureMax": 141},
+        {"desc": "well-done", "temperature": 149, "temperatureMin": 142, "temperatureMax": 154}
+      ]
+    },
+    {
+      "name": "Whole Chicken",
+      "value": "whole-chicken",
+      "cookingMode": "roast",
+      "donenessList": [
+        {"desc": "well-done", "temperature": 155, "temperatureMin": 154, "temperatureMax": 165, "chefsChoice": true}
+      ]
+    }
+  ]
+}

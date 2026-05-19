@@ -1,0 +1,25 @@
+{
+  "name": "Chicken thighs (bone-in, skin-on)",
+  "description": "Bone-in skin-on thighs, skin-down for crispy skin. Grill→Bake. STOP at pull target.",
+  "protein": "bone-in skin-on chicken thighs, ~6-8 oz each",
+  "target_doneness": "juicy dark meat with crispy skin",
+  "final_internal_after_rest": "175°F (juicy)",
+  "pull_temp_f": 170.0,
+  "done_signal": "stop",
+  "phases": [
+    {
+      "trigger_temp_f": 0.0,
+      "mode": 3,
+      "temp_f": 400,
+      "time_s": 2400,
+      "name": "Sear skin (Grill 400°F — bottom-element bias crisps skin from below)"
+    },
+    {
+      "trigger_temp_f": 145.0,
+      "mode": 10,
+      "temp_f": 375,
+      "time_s": 2400,
+      "name": "Even finish (Bake 375°F — medium fan, dark meat is forgiving)"
+    }
+  ]
+}

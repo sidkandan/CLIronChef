@@ -1,0 +1,99 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+develop-eggs/
+parts/
+sdist/
+var/
+wheels/
+.installed.cfg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+.env
+.venv/
+ENV/
+
+# pytest / coverage / tox
+.pytest_cache/
+.coverage
+.coverage.*
+.cache
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+
+# mypy / ruff
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+dmypy.json
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.project
+.pydevproject
+.settings/
+
+# CLIronChef credentials & MQTT certs (CRITICAL — never commit)
+~/.cliron-chef/
+.cliron-chef/
+*.p12
+*.pem
+*.crt
+*.key
+credentials
+credentials.env
+token
+
+# CLIronChef runtime artifacts
+runs/
+*.jsonl
+*.cook.log
+
+# Raw phone media often contains GPS/device/audio metadata. Commit stripped derivatives
+# under docs/assets/ instead.
+*.mov
+*.MOV
+*.heic
+*.HEIC
+*.heif
+*.HEIF
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Local agent context / scratch
+.claude/
+.gemini/
+.codex/
+
+# APK / reverse-engineering artifacts (never include in public repos)
+*.apk
+*.xapk
+typhur-extract/
+jadx_out/
