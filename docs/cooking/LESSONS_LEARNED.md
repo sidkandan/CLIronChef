@@ -104,6 +104,67 @@ The salmon came out at the right internal temp (probe pulled at 120°F → final
 but it looked undercooked because the surface was pale (no real sear) and the texture
 was at the silky end of medium-rare. To some diners, it read as underdone.
 
+### 2026-05-25 — Claude's solo salmon cook (the carryover measurement)
+
+A Claude Code session a week after the cook-off re-ran the salmon strategy solo with
+the same Dome 2 + Sync ONE probe + the same coating, this time using the v2 understanding
+of single-stage + Grill→Bake + STOP-at-118°F.
+
+```
+Single-stage Grill (3) @ 450°F, 2400s buffer
+At probe 89°F (vs Gemini's 95°F — adversarial-review tweak to absorb chamber-cooldown
+                 lag during the 450→300 mode swap):
+  hot-modify → Bake (10) @ 300°F, 2400s
+At probe 118.2°F:
+  send STOP (cookingAction=4)
+```
+
+The strategy executed perfectly — transition trigger fired exactly at probe 89.1°F,
+STOP fired exactly at probe 118.2°F, total active cook 11m17s. **But the salmon came
+out well-done, not medium-rare.**
+
+The cook fell down on post-STOP carryover. The user didn't open the lid promptly. Over
+5 minutes of post-STOP probe logging:
+
+- STOP at probe **118.2°F**, chamber at 271°F
+- t+30s: probe 122.2°F (chamber 264°F)
+- t+1m: probe 127.0°F (chamber 247°F)
+- t+2m: probe 131.2°F (chamber 213°F)
+- t+5m peak: probe **145.9°F** (chamber 162°F)
+
+That's **+27.7°F of carryover** — vs ATK's published +8°F figure for a 300°F-chamber
+counter-rest. The food kept absorbing heat from the closed chamber's thermal mass until
+the gradient equilibrated.
+
+### Lessons codified from 2026-05-25
+
+- **ATK's carryover figures assume food on a counter, not food in a closed Dome.**
+  Closed-Dome post-STOP carryover is ~3× higher (+27°F observed vs +8°F published).
+  See [CARRYOVER.md](CARRYOVER.md) for the full measurement and implications.
+
+- **The lid-open lag at Start cost ~5 min of effective sear.** Chamber dropped from
+  163°F to 126°F over the first 90s after Start (lid open during loading); it took
+  until t+5m for the chamber to break 250°F. Future-cook recommendation: load fast and
+  Start within seconds, or pre-heat empty before loading.
+
+- **STOP-as-done-signal requires the user to be at the device.** If the user is even
+  2 minutes slow to open the lid, the cook overshoots into the next doneness band. For
+  any cook where user-timing is uncertain, use `done_signal: warm_hold` with Dehydrate
+  175-180°F.
+
+- **The Reheat-180°F warm-hold attempted in Claude's salvage round was actually
+  firmware-clamped to 210°F** (per `data/modes/af04_modes.json` — Reheat min is 210°F).
+  The salvage didn't notice because the cook was short. Dehydrate (mode 13) is the
+  correct warm-hold mode — min 105°F, both-element gentle, low fan. This is now
+  enforced by `tests/test_warm_hold_validation.py`.
+
+- **The Typhur cloud already pushes to FCM/APNs when our STOP fires.** Enabling Typhur
+  app notifications on the user's phone is the highest-leverage notification channel
+  with zero setup on our side. We can't trigger custom pushes — every direct push path
+  (MQTT publish, alert cmdTypes, push HTTP endpoints) is ACL-blocked. See
+  [NOTIFICATION_CHANNELS.md](../project/NOTIFICATION_CHANNELS.md) for the full
+  investigation.
+
 ### Claude's salvage round
 
 After the verdict, the user put Claude's salmon back in for a salvage cook. By then

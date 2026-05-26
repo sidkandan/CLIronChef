@@ -3,6 +3,31 @@
 All notable changes to CLIronChef are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [Unreleased]
+
+### Added
+- `docs/cooking/CARRYOVER.md` — empirical measurement of post-STOP carryover from the
+  2026-05-25 cook: **+27.7°F when food stays in closed Dome** (vs ATK's published +8°F
+  for counter-rest). Explains why warm-hold beats STOP when user-timing is uncertain,
+  with a pull-temp budget per scenario.
+- `docs/project/NOTIFICATION_CHANNELS.md` — exhaustive research on Typhur push channels.
+  All direct paths (MQTT publish, alert cmdTypes, push HTTP endpoints) are ACL-blocked.
+  **The Typhur app's own native push is the highest-leverage channel** — enable it once
+  on the user's phone and `STOP` events automatically fire FCM/APNs notifications. Also
+  documents local-only fallback channels (Notification Center, opt-in TTS/iMessage/webhook).
+
+### Documented
+- 2026-05-25 cook entry in [docs/cooking/LESSONS_LEARNED.md](docs/cooking/LESSONS_LEARNED.md):
+  the cook that delivered the +27°F carryover measurement and motivated the
+  carryover-aware warm-hold defaults. Confirmed: Reheat min is firmware-clamped to 210°F;
+  Dehydrate is the correct warm-hold mode.
+
+### Notes
+- No code changes in this entry — these additions are documentation-only. Probe-ambient
+  "user pulled" detection, lid-open suspect warnings, slow-ramp warnings, and
+  escalating post-STOP notifications are queued as future runner work (documented in
+  CARRYOVER.md under "Future work").
+
 ## [0.1.0] — 2026-05-19
 
 Initial public release.
