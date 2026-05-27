@@ -28,6 +28,12 @@ All notable changes to CLIronChef are documented here. Format follows
   escalating post-STOP notifications are queued as future runner work (documented in
   CARRYOVER.md under "Future work").
 
+### Security
+- Hardened public-release hygiene checks to scan tracked files only, ignore local
+  gitignored cook logs, and fail on JPEG EXIF/GPS/device metadata.
+- Added issue/PR template reminders to scrub telemetry identifiers and strip image
+  metadata before sharing.
+
 ## [0.1.0] — 2026-05-19
 
 Initial public release.

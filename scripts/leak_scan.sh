@@ -8,76 +8,79 @@ set -eu
 
 FAIL=0
 
+tracked_files() {
+  if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    git ls-files -- "$@"
+  else
+    find . -type f "$@"
+  fi
+}
+
 scan_grep() {
   label="$1"
   pattern="$2"
   shift 2
+  files="$(mktemp)"
 
   echo "Scanning for ${label}..."
-  if grep -rnE "$pattern" "$@" \
-      --exclude-dir=.git \
-      --exclude-dir=.venv \
-      --exclude-dir=__pycache__ \
-      --exclude=PUBLIC_RELEASE_CHECKLIST.md \
-      --exclude=.pre-commit-config.yaml \
-      .; then
+  tracked_files "$@" | grep -Ev '(^|/)(docs/project/PUBLIC_RELEASE_CHECKLIST.md|\.pre-commit-config.yaml)$' > "$files" || true
+  if [ -s "$files" ] && xargs grep -nE "$pattern" < "$files"; then
     echo "ERROR: ${label} detected"
     FAIL=1
   fi
+  rm -f "$files"
 }
 
 scan_grep \
   "/Users/<name>/ personal paths" \
   "/Users/[A-Za-z]" \
-  --include="*.md" --include="*.py" --include="*.json" --include="*.toml" \
-  --include="*.yml" --include="*.yaml"
+  "*.md" "*.py" "*.json" "*.toml" "*.yml" "*.yaml"
 
 scan_grep \
   "long numeric device/cmd IDs" \
   "\\b[0-9]{15,24}\\b" \
-  --include="*.md" --include="*.py" --include="*.json" --include="*.toml" \
-  --include="*.yml" --include="*.yaml"
+  "*.md" "*.py" "*.json" "*.toml" "*.yml" "*.yaml"
 
 scan_grep \
   "Typhur-like serial numbers" \
   "\\b(AF|WT)[0-9A-Z]{10,}\\b" \
-  --include="*.md" --include="*.py" --include="*.json" --include="*.toml" \
-  --include="*.yml" --include="*.yaml"
+  "*.md" "*.py" "*.json" "*.toml" "*.yml" "*.yaml"
 
 scan_grep \
   "likely cached credential values" \
   "(password_md5|p12Password|x-token)[[:space:]]*[:=][[:space:]]*[\"']?[A-Za-z0-9._:-]{16,}" \
-  --include="*.py" --include="*.json" --include="*.md" --include="*.yml" --include="*.yaml"
+  "*.py" "*.json" "*.md" "*.yml" "*.yaml"
 
 scan_grep \
   "inline private key material" \
   "BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY" \
-  --include="*.md" --include="*.py" --include="*.json" --include="*.toml" \
-  --include="*.yml" --include="*.yaml"
+  "*.md" "*.py" "*.json" "*.toml" "*.yml" "*.yaml"
 
 echo "Scanning for credential files..."
-if find . -type f \( -name "*.p12" -o -name "*.key" -o -name "*.pem" -o -name "client.crt" \) \
-    -not -path "./.git/*" \
-    -not -path "./.venv/*" \
-    -not -path "./__pycache__/*" | grep .; then
+if tracked_files | grep -E '(^|/)([^/]*\.p12|[^/]*\.key|[^/]*\.pem|client\.crt)$'; then
   echo "ERROR: credential files detected"
   FAIL=1
 fi
 
 echo "Scanning for runtime telemetry logs..."
-if find . -type f \( -name "*.jsonl" -o -name "*.log" -o -name "*.cook.log" \) \
-    -not -path "./.git/*" \
-    -not -path "./.venv/*" \
-    -not -path "./__pycache__/*" | grep .; then
+if tracked_files | grep -E '(^|/)[^/]*\.(jsonl|log|cook\.log)$'; then
   echo "ERROR: runtime logs detected"
   FAIL=1
 fi
 
+echo "Scanning JPEG metadata..."
+if command -v file >/dev/null 2>&1; then
+  jpgs="$(mktemp)"
+  tracked_files "*.jpg" "*.jpeg" "*.JPG" "*.JPEG" > "$jpgs"
+  if [ -s "$jpgs" ] && xargs file < "$jpgs" | grep -Ei "Exif|GPS-Data|iPhone|Apple"; then
+    echo "ERROR: JPEG EXIF/device metadata detected; strip images before committing"
+    FAIL=1
+  fi
+  rm -f "$jpgs"
+fi
+
 echo "Scanning for raw phone media..."
-if find . -type f \( -iname "*.mov" -o -iname "*.heic" -o -iname "*.heif" \) \
-    -not -path "./.git/*" \
-    -not -path "./.venv/*" \
-    -not -path "./__pycache__/*" | grep .; then
+if tracked_files | grep -Ei '(^|/)[^/]*\.(mov|heic|heif)$'; then
   echo "ERROR: raw phone media detected; commit stripped derivatives instead"
   FAIL=1
 fi

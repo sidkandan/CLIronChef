@@ -34,6 +34,9 @@ assignees: ''
 
 ## Telemetry log (if relevant)
 
+Scrub `cookUuid`, `deviceId`, user IDs, account emails, and any other account-linked
+values before pasting logs.
+
 ```
 (paste recent lines from runs/<timestamp>.jsonl)
 ```

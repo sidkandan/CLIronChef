@@ -14,6 +14,8 @@
 - [ ] If adding a new recipe: I have actually cooked it and it worked
 - [ ] If changing behavior: README / docs / CHANGELOG updated
 - [ ] No `~/.cliron-chef/`, `*.p12`, `*.key`, `runs/`, or other gitignored artifacts staged
+- [ ] Any attached telemetry has `cookUuid`, `deviceId`, user IDs, and account emails scrubbed
+- [ ] Any committed images are cropped/resized as appropriate and stripped of EXIF/GPS metadata
 - [ ] Commit messages follow Conventional Commits style (`feat(...)`, `fix(...)`, `docs(...)`)
 
 ## Test plan
